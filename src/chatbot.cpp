@@ -100,7 +100,8 @@ ChatBot::ChatBot (ChatBot &&source)
     // Copy pointer to heap memory to dest
     _image = source._image;
 
-    // Set ChatLogic to point to this new address
+    // Set ChatLogic to point to this new address. Some question on the Mentor Q&A mentioned that this might need to go here, and this was the last thing i needed to add before Task 5 was functional. 
+    // Code still functions without this, but I feel like it should be in there. I think i need to research more about exactly how move constructors differ than move assignment operators
     _chatLogic->SetChatbotHandle(this); 
 
     // set original object pointers to heap to null
