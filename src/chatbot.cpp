@@ -42,8 +42,90 @@ ChatBot::~ChatBot()
     }
 }
 
+
 //// STUDENT CODE
 ////
+
+// Copy Constructor
+ChatBot::ChatBot (const ChatBot &source)
+{
+    // Write a message to console
+    std::cout << "ChatBot Copy Constructor" << std::endl; 
+
+    // Need to set internal stack variables
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+ 
+    // Allocate new heap mem for new object
+    // use this constructor: wxBitmap(const wxImage& image, int depth = wxBITMAP_SCREEN_DEPTH);
+    _image = new wxBitmap(*(source._image));
+}
+
+// Copy assignment operator
+ChatBot &ChatBot::operator=(const ChatBot &source)
+{
+    // Write a message to console
+    std::cout << "ChatBot Copy Assignment Operator" << std::endl; 
+
+    // Need to check if i'm setting to itself
+    if (this == &source) return *this;
+    
+    // Because you are overwriting an existing object, need to deallocate.
+    delete _image;
+
+    // Allocate new heap mem for new object
+    // use this constructor: wxBitmap(const wxImage& image, int depth = wxBITMAP_SCREEN_DEPTH);
+    _image = new wxBitmap(*(source._image));
+
+    // Need to set internal stack variables
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+
+    return *this;
+}
+
+// move constructor
+ChatBot::ChatBot (ChatBot &&source)
+{
+    // Write message to console
+    std::cout << "ChatBot Move Constructor" << std::endl;
+
+    // copy stack variables
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+
+    // Copy pointer to heap memory to dest
+    _image = source._image;
+
+    // set original object pointers to heap to null
+    source._image = nullptr;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+}
+
+// move assignment operator
+ChatBot &ChatBot::operator= (ChatBot &&source)
+{
+    // Write a message to console
+    std::cout << "ChatBot Move Assignment Operator" << std::endl; 
+
+    // Check to make sure i don't move-assign myself
+    if (this == &source) return *this;
+
+    // copy over stack variables
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+
+    // Copy pointer to heap memory to dest
+    _image = source._image;
+
+    // set original object pointers to heap to null
+    source._image = nullptr;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+
+    return *this;
+}
 
 ////
 //// EOF STUDENT CODE

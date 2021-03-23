@@ -1,6 +1,7 @@
 #ifndef GRAPHEDGE_H_
 #define GRAPHEDGE_H_
 
+#include <iostream>
 #include <vector>
 #include <string>
 
