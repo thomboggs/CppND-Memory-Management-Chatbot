@@ -228,9 +228,12 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
     // Task 5
     // Create local chatbot on stack
     ChatBot temp_chatBot("../images/chatbot.png");
+    // Save reference in ChatLogic to this temporary Chatbot
     _chatBot = &temp_chatBot;
+    // Redo the function that was using previously in the constructor 
     _chatBot->SetRootNode(rootNode);
     _chatBot->SetChatLogicHandle(this);
+    // Move the temporary Chatbot while to keep the pointer variable valid. 
     rootNode->MoveChatbotHere(std::move(temp_chatBot));
     
     ////
