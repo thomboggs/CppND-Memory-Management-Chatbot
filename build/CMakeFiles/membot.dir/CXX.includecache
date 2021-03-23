@@ -72,12 +72,6 @@ string
 chatgui.h
 /home/thomas/Udacity/CppND-Memory-Management-Chatbot/src/chatgui.h
 
-/home/thomas/Udacity/CppND-Memory-Management-Chatbot/src/graphedge.cpp
-graphnode.h
-/home/thomas/Udacity/CppND-Memory-Management-Chatbot/src/graphnode.h
-graphedge.h
-/home/thomas/Udacity/CppND-Memory-Management-Chatbot/src/graphedge.h
-
 /home/thomas/Udacity/CppND-Memory-Management-Chatbot/src/graphedge.h
 iostream
 -
