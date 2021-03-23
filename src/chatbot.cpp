@@ -55,6 +55,7 @@ ChatBot::ChatBot (const ChatBot &source)
     // Need to set internal stack variables
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
+    _currentNode = source._currentNode;
  
     // Allocate new heap mem for new object
     // use this constructor: wxBitmap(const wxImage& image, int depth = wxBITMAP_SCREEN_DEPTH);
@@ -80,6 +81,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source)
     // Need to set internal stack variables
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
+    _currentNode = source._currentNode;
 
     return *this;
 }
@@ -93,9 +95,13 @@ ChatBot::ChatBot (ChatBot &&source)
     // copy stack variables
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
+    _currentNode = source._currentNode;
 
     // Copy pointer to heap memory to dest
     _image = source._image;
+
+    // Set ChatLogic to point to this new address
+    _chatLogic->SetChatbotHandle(this); 
 
     // set original object pointers to heap to null
     source._image = nullptr;
@@ -115,6 +121,10 @@ ChatBot &ChatBot::operator= (ChatBot &&source)
     // copy over stack variables
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
+    _currentNode = source._currentNode;
+
+    // Set ChatLogic to point to this new address
+    _chatLogic->SetChatbotHandle(this); 
 
     // Copy pointer to heap memory to dest
     _image = source._image;
